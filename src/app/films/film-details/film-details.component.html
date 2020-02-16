@@ -3,10 +3,13 @@
   Back To List
 </a>
 <mat-card>
+  <mat-card-header>
   <mat-card-title>
     <mat-icon class="header-icon">movie</mat-icon>
     {{film.title}}
   </mat-card-title>
+    <mat-card-subtitle>Directed by {{film.director}}</mat-card-subtitle>
+  </mat-card-header>
   <mat-card-content>
 <!--    <div class="section">-->
 <!--      <app-availabilities-table [availabilities]="film.availabilities"></app-availabilities-table>-->

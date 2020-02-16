@@ -17,12 +17,12 @@ export class FilmsListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.filmsService.getData().subscribe(data => this.films = data);
+    this.filmsService.getFilmsList().subscribe(data => this.films = data);
   }
 
   showDetails(film: Film) {
     this.filmsService.selectedFilm = film;
-    this.router.navigate(['/films', film.episode_id]);
+    this.router.navigate(['/films', film.id]);
   }
 
 }
