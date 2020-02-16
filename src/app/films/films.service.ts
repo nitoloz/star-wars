@@ -2,17 +2,9 @@ import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
+import {SWAPI_BASE_URL, ListResponse} from '../http.interface';
 
-const MOVIES_DATA_URL = 'https://swapi.co/api/films';
-
-export interface ListResponse<T> {
-  count: number;
-  next: string;
-  previous: string;
-  results: T[];
-}
-
-export interface Movie {
+export interface Film {
   title: string;
   episode_id: number;
   opening_crawl: string;
@@ -30,14 +22,15 @@ export interface Movie {
 }
 
 @Injectable()
-export class MoviesService {
+export class FilmsService {
 
-  selectedMovie: Movie;
+  selectedFilm: Film;
 
   constructor(private http: HttpClient) {
   }
 
-  getData(): Observable<Movie[]> {
-    return this.http.get<ListResponse[]>(MOVIES_DATA_URL).pipe(map((movies => movies.results)));
+  getData(): Observable<Film[]> {
+    return this.http.get<ListResponse<Film>>(`${SWAPI_BASE_URL}/films`)
+      .pipe(map((films => films.results)));
   }
 }
