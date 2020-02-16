@@ -19,6 +19,7 @@ export interface Character {
   gender: string;
   homeworld: string;
   films: string[];
+  filmsData: Film[];
   species: string[];
   vehicles: string[];
   starships: string[];
@@ -37,10 +38,11 @@ export class CharactersService {
 
   getCharactersList(): Observable<Character[]> {
     return this.http.get<ListResponse<Character>>(`${SWAPI_BASE_URL}/people`)
-      .pipe(map((characters => characters.results.map(character => {
-          character.id = parseInt(character.url.substring(CHARACTER_HTTP_URL_LENGTH, character.url.length - 1), 10);
-          return character;
-        })
+      .pipe(map((characters =>
+          characters.results.map(character => {
+            character.id = parseInt(character.url.substring(CHARACTER_HTTP_URL_LENGTH, character.url.length - 1), 10);
+            return character;
+          })
       )));
   }
 
@@ -50,7 +52,8 @@ export class CharactersService {
         .pipe(map(character => {
           character.id = parseInt(character.url.substring(CHARACTER_HTTP_URL_LENGTH, character.url.length - 1), 10);
           return character;
-        }))));
+        }))
+    ));
   }
 
   getCharacter(characterId: number): Observable<Character> {

@@ -23,6 +23,8 @@ import {FilmDetailsComponent} from './films/film-details/film-details.component'
 import {FilmsListComponent} from './films/films-list/films-list.component';
 import {CharactersListComponent} from './characters/characters-list/characters-list.component';
 import {CommonModule} from '@angular/common';
+import {CharacterDetailsComponent} from './characters/character-details/character-details.component';
+import {CanActivateCharacterDetailsService} from './characters/can-activate-character-details.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import {CommonModule} from '@angular/common';
     NavbarComponent,
     FilmDetailsComponent,
     FilmsListComponent,
-    CharactersListComponent
+    CharactersListComponent,
+    CharacterDetailsComponent
   ],
   imports: [
     HttpClientModule,
@@ -48,7 +51,12 @@ import {CommonModule} from '@angular/common';
     MatProgressSpinnerModule,
     MatGridListModule,
   ],
-  providers: [FilmsService, CharactersService, CanActivateFilmDetailsService],
+  providers: [
+    FilmsService,
+    CharactersService,
+    CanActivateFilmDetailsService,
+    CanActivateCharacterDetailsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

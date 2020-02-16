@@ -1,0 +1,45 @@
+<a mat-button [routerLink]="['/films']">
+  <mat-icon>arrow_back</mat-icon>
+  Back To Film Details
+</a>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      {{character.name}}
+    </mat-card-title>
+    <mat-card-subtitle>{{character.gender}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-grid-list cols="7" rowHeight="100px">
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <span class="mat-body-strong">Height</span>
+        <span class="mat-body">{{character.height}}</span>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <span class="mat-body-strong">Mass</span>
+        <span class="mat-body">{{character.mass}}</span>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <span class="mat-body-strong">Hair Color</span>
+        <span class="mat-body">{{character.hair_color}}</span>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <span class="mat-body-strong">Skin Color</span>
+        <span class="mat-body">{{character.skin_color}}</span>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <span class="mat-body-strong">Eye Color</span>
+        <span class="mat-body">{{character.eye_color}}</span>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <span class="mat-body-strong">Birth Year</span>
+        <span class="mat-body">{{character.birth_year}}</span>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <span class="mat-body-strong"># of Films</span>
+        <span class="mat-body">{{character.films.length}}</span>
+      </mat-grid-tile>
+    </mat-grid-list>
+<!--    <app-characters-list [characters]="character.filmsData"></app-characters-list>-->
+  </mat-card-content>
+</mat-card>

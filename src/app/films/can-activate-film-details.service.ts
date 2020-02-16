@@ -15,9 +15,9 @@ export class CanActivateFilmDetailsService implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return this.filmsService.selectedFilm && this.filmsService.selectedFilm.id === parseInt(route.params.id, 10)
+    return this.filmsService.selectedFilm && this.filmsService.selectedFilm.id === parseInt(route.params.filmId, 10)
       ? this.getCharactersForSelecterFilm()
-      : this.filmsService.getFilm(route.params.id).pipe(
+      : this.filmsService.getFilm(route.params.filmId).pipe(
         catchError(error => {
           this.router.navigate(['/films']);
           return of(false);
