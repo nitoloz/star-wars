@@ -62,7 +62,10 @@ export class FilmsService {
   getFilm(filmId: number): Observable<Film> {
     this.loaderService.startLoading();
     return this.http.get<Film>(`${SWAPI_BASE_URL}/films/${filmId}`)
-      .pipe(finalize(() => this.loaderService.finishLoading()));
+      .pipe(map(film => {
+        film.id = this.getFilmId(film.url);
+        return film;
+      }), finalize(() => this.loaderService.finishLoading()));
   }
 
   private getFilmId(filmUrl: string): number {

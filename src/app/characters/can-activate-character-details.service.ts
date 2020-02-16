@@ -21,14 +21,14 @@ export class CanActivateCharacterDetailsService implements CanActivate {
     return this.charactersService.selectedCharacter
     && this.charactersService.selectedCharacter.id === parseInt(route.params.characterId, 10)
       ? this.getFilmsForSelectedCharacter()
-      : this.filmsService.getFilm(route.params.characterId).pipe(
+      : this.charactersService.getCharacter(route.params.characterId).pipe(
         catchError(error => {
           this.router.navigate(['/characters']);
           return of(false);
         }),
-        mergeMap((selectedFilm: Film) => {
-          if (selectedFilm) {
-            this.filmsService.selectedFilm = selectedFilm;
+        mergeMap((selectedCharacter: Character) => {
+          if (selectedCharacter) {
+            this.charactersService.selectedCharacter = selectedCharacter;
             return this.getFilmsForSelectedCharacter();
           } else {
             this.router.navigate(['/characters']);

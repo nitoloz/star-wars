@@ -12,7 +12,7 @@ const routes: Routes = [
   {path: 'films/:filmId', component: FilmDetailsComponent, canActivate: [CanActivateFilmDetailsService]},
   {path: 'characters', component: CharactersListComponent},
   {path: 'characters/:characterId', component: CharacterDetailsComponent, canActivate: [CanActivateCharacterDetailsService]},
-  {path: '', redirectTo: '/films', pathMatch: 'full'}
+  {path: '**', redirectTo: '/films', pathMatch: 'full'}
 ];
 
 @NgModule({
