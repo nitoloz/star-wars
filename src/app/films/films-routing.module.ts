@@ -1,16 +1,18 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {MoviesListComponent} from './films-list/films-list.component';
+import {FilmDetailsComponent} from './film-details/film-details.component';
+import {CanActivateFilmDetailsService} from './can-activate-film-details.service';
+import {FilmsListComponent} from './films-list/films-list.component';
 
 
-const moviesRoutes: Routes = [
-  {path: 'films', component: MoviesListComponent}
-  // {path: 'films/:id', component: HouseholdDetailsComponent, canActivate: [CanActivateMoviesDetailsService]}
+const filmsRoutes: Routes = [
+  {path: 'films', component: FilmsListComponent},
+  {path: 'films/:id', component: FilmDetailsComponent, canActivate: [CanActivateFilmDetailsService]}
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forChild(moviesRoutes)
+    RouterModule.forChild(filmsRoutes)
   ],
   exports: [
     RouterModule

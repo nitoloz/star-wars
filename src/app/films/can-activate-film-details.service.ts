@@ -13,7 +13,7 @@ export class CanActivateFilmDetailsService implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return this.filmsService.selectedFilm && this.filmsService.selectedFilm.episode_id === route.params.id
+    return this.filmsService.selectedFilm && this.filmsService.selectedFilm.episode_id === parseInt(route.params.id, 10)
       ? true
       : this.filmsService.getData().pipe(
         map((data: Film[]) => {

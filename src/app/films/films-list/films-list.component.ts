@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 import {FilmsService, Film} from '../films.service';
 
 @Component({
-  selector: 'app-movies-list',
+  selector: 'app-films-list',
   templateUrl: './films-list.component.html',
   styleUrls: ['./films-list.component.scss']
 })
@@ -20,9 +20,9 @@ export class FilmsListComponent implements OnInit {
     this.filmsService.getData().subscribe(data => this.films = data);
   }
 
-  showDetails(movie: Film) {
-    this.filmsService.selectedFilm = movie;
-    this.router.navigate(['/films', movie.episode_id]);
+  showDetails(film: Film) {
+    this.filmsService.selectedFilm = film;
+    this.router.navigate(['/films', film.episode_id]);
   }
 
 }
