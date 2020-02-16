@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="!loading">
   <table mat-table [dataSource]="films">
     <ng-container matColumnDef="title">
       <th mat-header-cell *matHeaderCellDef> Title</th>
@@ -24,3 +24,4 @@
     <tr mat-row *matRowDef="let myRowData; columns: tableColumns" (click)="showDetails(myRowData)"></tr>
   </table>
 </div>
+<mat-spinner [diameter]="50" *ngIf="loading"></mat-spinner>

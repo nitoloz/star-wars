@@ -7,9 +7,32 @@
     <mat-card-title>
       {{film.title}}
     </mat-card-title>
-    <mat-card-subtitle>Released {{film.release_date}}</mat-card-subtitle>
+    <mat-card-subtitle>{{film.director}}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
+    <p class="mat-body">{{film.opening_crawl}}</p>
+    <mat-grid-list cols="5" rowHeight="100px">
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <span class="mat-body-strong">Episode</span>
+        <span class="mat-body">{{film.episode_id}}</span>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <span class="mat-body-strong">Release Date</span>
+        <span class="mat-body">{{film.release_date}}</span>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <span class="mat-body-strong">Director</span>
+        <span class="mat-body">{{film.director}}</span>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <span class="mat-body-strong">Producer</span>
+        <span class="mat-body">{{film.producer}}</span>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <span class="mat-body-strong"># of Characters</span>
+        <span class="mat-body">{{film.characters.length}}</span>
+      </mat-grid-tile>
+    </mat-grid-list>
     <app-characters-list [characters]="film.charactersData"></app-characters-list>
   </mat-card-content>
 </mat-card>

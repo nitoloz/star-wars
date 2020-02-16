@@ -9,8 +9,9 @@ import {
   MatButtonModule,
   MatCardModule,
   MatDividerModule,
-  MatExpansionModule,
+  MatExpansionModule, MatGridListModule,
   MatIconModule,
+  MatProgressSpinnerModule,
   MatTableModule,
   MatToolbarModule
 } from '@angular/material';
@@ -44,6 +45,8 @@ import {CommonModule} from '@angular/common';
     MatButtonModule,
     MatExpansionModule,
     MatDividerModule,
+    MatProgressSpinnerModule,
+    MatGridListModule,
   ],
   providers: [FilmsService, CharactersService, CanActivateFilmDetailsService],
   bootstrap: [AppComponent]

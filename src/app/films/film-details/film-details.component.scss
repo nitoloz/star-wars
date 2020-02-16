@@ -8,7 +8,13 @@ table {
   }
 }
 
-.mat-card{
+::ng-deep.mat-grid-tile {
+  .mat-figure {
+    flex-direction: column !important;
+  }
+}
+
+.mat-card {
   max-width: 80%;
   margin: 0 auto;
 }
@@ -22,6 +28,6 @@ table {
   padding: 20px 0;
 }
 
-.mat-divider{
-    border-top-width: 2px;
+.mat-divider {
+  border-top-width: 2px;
 }
