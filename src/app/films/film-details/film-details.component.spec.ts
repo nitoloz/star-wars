@@ -5,7 +5,7 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {FilmsService} from '../films.service';
 import {MatButtonModule, MatIconModule} from '@angular/material';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
-import {MockFilmsService} from '../films-list-table/films-list-table.component.spec';
+import {MockFilmsService} from '../films-list/films-list.component.spec';
 
 describe('HouseholdDetailsComponent', () => {
   let component: FilmDetailsComponent;

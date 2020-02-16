@@ -1,25 +1,31 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-
 import {CharactersListComponent} from './characters-list.component';
 import {MockRouter} from '../../films/can-activate-film-details.service.spec';
-import {FilmsService} from '../../films/films.service';
+import {Film, FilmsService} from '../../films/films.service';
 import {MatTableModule} from '@angular/material';
 import {of} from 'rxjs';
 import {Router} from '@angular/router';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {CharactersService} from '../characters.service';
 
-export class MockHouseholdsService {
-  getData() {
+
+export class MockCharactersService {
+  getCharactersList(pageNumber = 1) {
     return of([]);
   }
-  getHouseholdTypeIcon(){
-    return 'person';
+
+  getCharactersByFilm(film: Film) {
+    return of([]);
+  }
+
+  getCharacter(characterId: number) {
+    return of({});
   }
 }
 
 let householdsService: FilmsService;
 let router: Router;
-describe('HouseholdsListComponent', () => {
+describe('CharactersListComponent', () => {
   let component: CharactersListComponent;
   let fixture: ComponentFixture<CharactersListComponent>;
 
@@ -28,7 +34,7 @@ describe('HouseholdsListComponent', () => {
       imports: [MatTableModule],
       declarations: [CharactersListComponent],
       providers: [
-        {provide: FilmsService, useClass: MockHouseholdsService},
+        {provide: CharactersService, useClass: MockCharactersService},
         {provide: Router, useClass: MockRouter}
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]

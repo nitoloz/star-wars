@@ -7,13 +7,19 @@ import {of} from 'rxjs';
 import {Router} from '@angular/router';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {MockRouter} from '../can-activate-film-details.service.spec';
+import {Character} from '../../characters/characters.service';
 
-export class MockHouseholdsService {
-  getData() {
+export class MockFilmsService {
+  getFilmsList() {
     return of([]);
   }
-  getHouseholdTypeIcon(){
-    return 'person';
+
+  getFilmsByCharacter(character: Character) {
+    return of([]);
+  }
+
+  getFilm(filmId: number) {
+    return of({});
   }
 }
 
@@ -28,7 +34,7 @@ describe('HouseholdsListComponent', () => {
       imports: [MatTableModule],
       declarations: [FilmsListComponent],
       providers: [
-        {provide: FilmsService, useClass: MockHouseholdsService},
+        {provide: FilmsService, useClass: MockFilmsService},
         {provide: Router, useClass: MockRouter}
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]

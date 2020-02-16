@@ -7,10 +7,8 @@ import {of} from 'rxjs';
 import {Router} from '@angular/router';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {MockRouter} from '../can-activate-film-details.service.spec';
+import {MockFilmsService} from '../films-list/films-list.component.spec';
 
-export class MockFilmsService {
-
-}
 
 let householdsService: FilmsService;
 let router: Router;

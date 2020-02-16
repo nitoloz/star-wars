@@ -5,9 +5,10 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {FilmsService} from '../../films/films.service';
 import {MatButtonModule, MatIconModule} from '@angular/material';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
-import {MockFilmsService} from '../../films/films-list-table/films-list-table.component.spec';
+import {CharactersService} from '../characters.service';
+import {MockCharactersService} from '../characters-list/characters-list.component.spec';
 
-describe('HouseholdDetailsComponent', () => {
+describe('CharacterDetailsComponent', () => {
   let component: CharacterDetailsComponent;
   let fixture: ComponentFixture<CharacterDetailsComponent>;
 
@@ -16,7 +17,7 @@ describe('HouseholdDetailsComponent', () => {
       imports: [MatIconModule, MatButtonModule, RouterTestingModule],
       declarations: [CharacterDetailsComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      providers: [{provide: FilmsService, useClass: MockFilmsService}]
+      providers: [{provide: CharactersService, useClass: MockCharactersService}]
     })
       .compileComponents();
     // const householdsService = TestBed.get(FilmsService);

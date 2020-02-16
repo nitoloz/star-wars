@@ -4,7 +4,6 @@ import {Film, FilmsService} from './films.service';
 import {SWAPI_BASE_URL} from '../http.interface';
 import {LoaderService} from '../loader/loader.service';
 import {HttpClient} from '@angular/common/http';
-import {of} from 'rxjs';
 import {Character} from '../characters/characters.service';
 
 const mockFilms = [
@@ -27,7 +26,7 @@ const mockCharacter = {
   ]
 } as Character;
 
-fdescribe('FilmsService', () => {
+describe('FilmsService', () => {
   let httpClient: HttpClient;
   let httpTestingController: HttpTestingController;
   let service: FilmsService;

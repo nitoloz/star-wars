@@ -38,7 +38,7 @@ export class CanActivateCharacterDetailsService implements CanActivate {
   }
 
   getFilmsForSelectedCharacter(): Observable<boolean> {
-    return this.charactersService.selectedCharacter.filmsData !== undefined
+    return !!this.charactersService.selectedCharacter.filmsData
       ? of(true)
       : this.filmsService.getFilmsByCharacter(this.charactersService.selectedCharacter).pipe(
         catchError(error => {
