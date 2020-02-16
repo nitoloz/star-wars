@@ -84,7 +84,13 @@ THE SOFTWARE.
 
 @angular/material/button
 
+@angular/material/card
+
+@angular/material/grid-list
+
 @angular/material/icon
+
+@angular/material/progress-spinner
 
 @angular/material/table
 
