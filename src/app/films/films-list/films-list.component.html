@@ -1,4 +1,4 @@
 <div class="container" *ngIf="!loading">
   <app-films-list-table [films]="films"></app-films-list-table>
 </div>
-<mat-spinner [diameter]="50" *ngIf="loading"></mat-spinner>
+<app-loader *ngIf="loading"></app-loader>

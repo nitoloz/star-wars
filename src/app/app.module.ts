@@ -27,6 +27,7 @@ import {CharacterDetailsComponent} from './characters/character-details/characte
 import {CanActivateCharacterDetailsService} from './characters/can-activate-character-details.service';
 import {CharactersListComponent} from './characters/characters-list/characters-list.component';
 import {FilmsListTableComponent} from './films/films-list-table/films-list-table.component';
+import {LoaderComponent} from './loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import {FilmsListTableComponent} from './films/films-list-table/films-list-table
     FilmsListTableComponent,
     CharactersListComponent,
     CharactersListTableComponent,
-    CharacterDetailsComponent
+    CharacterDetailsComponent,
+    LoaderComponent
   ],
   imports: [
     HttpClientModule,
