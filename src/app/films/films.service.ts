@@ -3,6 +3,7 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {SWAPI_BASE_URL, ListResponse} from '../http.interface';
+import {Character} from '../characters/characters.service';
 
 const FILM_HTTP_URL_LENGTH = `${SWAPI_BASE_URL}/films/`.length;
 
@@ -15,6 +16,7 @@ export interface Film {
   producer: string;
   release_date: string;
   characters: string[];
+  charactersData: Character[];
   planets: string[];
   starships: string[];
   vehicles: string[];

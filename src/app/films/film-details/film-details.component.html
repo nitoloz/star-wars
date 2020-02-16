@@ -4,12 +4,12 @@
 </a>
 <mat-card>
   <mat-card-header>
-  <mat-card-title>
-    {{film.title}}
-  </mat-card-title>
+    <mat-card-title>
+      {{film.title}}
+    </mat-card-title>
     <mat-card-subtitle>Released {{film.release_date}}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-
+    <app-characters-list [characters]="film.charactersData"></app-characters-list>
   </mat-card-content>
 </mat-card>

@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Film, FilmsService} from '../films.service';
 
 @Component({
-  selector: 'app-household-details',
+  selector: 'app-film-details',
   templateUrl: './film-details.component.html',
   styleUrls: ['./film-details.component.scss']
 })

@@ -1,12 +1,14 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree} from '@angular/router';
 import {Observable, of} from 'rxjs';
-import {catchError, map} from 'rxjs/operators';
+import {catchError, map, mergeMap} from 'rxjs/operators';
 import {Film, FilmsService} from './films.service';
+import {Character, CharactersService} from '../characters/characters.service';
 
 @Injectable()
 export class CanActivateFilmDetailsService implements CanActivate {
-  constructor(private filmsService: FilmsService, private router: Router) {
+  constructor(private filmsService: FilmsService, private charactersService: CharactersService,
+              private router: Router) {
   }
 
   canActivate(
@@ -14,21 +16,33 @@ export class CanActivateFilmDetailsService implements CanActivate {
     state: RouterStateSnapshot
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return this.filmsService.selectedFilm && this.filmsService.selectedFilm.id === parseInt(route.params.id, 10)
-      ? true
+      ? this.getCharactersForSelecterFilm()
       : this.filmsService.getFilm(route.params.id).pipe(
         catchError(error => {
-          console.log(error);
           this.router.navigate(['/films']);
           return of(false);
         }),
-        map((selectedFilm: Film) => {
+        mergeMap((selectedFilm: Film) => {
           if (selectedFilm) {
             this.filmsService.selectedFilm = selectedFilm;
-            return true;
+            return this.getCharactersForSelecterFilm();
           } else {
             this.router.navigate(['/films']);
-            return false;
+            return of(false);
           }
         }));
+  }
+
+  getCharactersForSelecterFilm(): Observable<boolean> {
+    return this.charactersService.getCharactersByFilm(this.filmsService.selectedFilm).pipe(
+      catchError(error => {
+        this.router.navigate(['/films']);
+        return of(false);
+      }),
+      map((characters: Character[]) => {
+        this.filmsService.selectedFilm.charactersData = characters;
+        return true;
+      })
+    );
   }
 }
