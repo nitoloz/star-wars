@@ -5,7 +5,9 @@ import {catchError, map, mergeMap} from 'rxjs/operators';
 import {Film, FilmsService} from '../films/films.service';
 import {Character, CharactersService} from './characters.service';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class CanActivateCharacterDetailsService implements CanActivate {
   constructor(private filmsService: FilmsService,
               private charactersService: CharactersService,

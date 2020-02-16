@@ -1,4 +1,8 @@
-<div class="container" *ngIf="!loading">
+<div class="container">
   <app-characters-list-table [characters]="characters"></app-characters-list-table>
+  <mat-paginator [length]="charactersCount"
+                 [pageSize]="10"
+                 [pageSizeOptions]="[10]"
+                 (page)="pageData($event)">
+  </mat-paginator>
 </div>
-<app-loader *ngIf="loading"></app-loader>

@@ -1,4 +1,5 @@
 <app-navbar></app-navbar>
 <div class="container">
   <router-outlet></router-outlet>
+  <app-loader [hidden]="loaderService.loadingCounter==0"></app-loader>
 </div>

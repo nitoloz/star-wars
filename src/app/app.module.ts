@@ -10,7 +10,7 @@ import {
   MatCardModule,
   MatDividerModule,
   MatExpansionModule, MatGridListModule,
-  MatIconModule,
+  MatIconModule, MatPaginatorModule,
   MatProgressSpinnerModule,
   MatTableModule,
   MatToolbarModule
@@ -56,12 +56,7 @@ import {LoaderComponent} from './loader/loader.component';
     MatDividerModule,
     MatProgressSpinnerModule,
     MatGridListModule,
-  ],
-  providers: [
-    FilmsService,
-    CharactersService,
-    CanActivateFilmDetailsService,
-    CanActivateCharacterDetailsService
+    MatPaginatorModule,
   ],
   bootstrap: [AppComponent]
 })

@@ -1,5 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FilmsService, Film} from '../films.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-films-list',
@@ -9,20 +10,21 @@ import {FilmsService, Film} from '../films.service';
 export class FilmsListComponent implements OnInit, OnDestroy {
   loading: boolean;
   films: Film[];
+  subscription: Subscription;
 
   constructor(public filmsService: FilmsService) {
   }
 
   ngOnInit() {
-    this.loading = true;
-    this.filmsService.getFilmsList().subscribe(data => {
+    this.subscription = this.filmsService.getFilmsList().subscribe(data => {
       this.films = data;
-      this.loading = false;
     });
   }
 
-  ngOnDestroy(){
-    this.loading = false;
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
 }

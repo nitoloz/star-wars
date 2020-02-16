@@ -1,9 +1,10 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {forkJoin, Observable} from 'rxjs';
-import {map, tap} from 'rxjs/operators';
+import {finalize, map, tap} from 'rxjs/operators';
 import {SWAPI_BASE_URL, ListResponse} from '../http.interface';
 import {Film} from '../films/films.service';
+import {LoaderService} from '../loader/loader.service';
 
 const CHARACTER_HTTP_URL_LENGTH = `${SWAPI_BASE_URL}/people/`.length;
 
@@ -28,47 +29,58 @@ export interface Character {
   url: string;
 }
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class CharactersService {
 
   selectedCharacter: Character;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private loaderService: LoaderService) {
   }
 
-  getCharactersList(): Observable<Character[]> {
-    return this.http.get<ListResponse<Character>>(`${SWAPI_BASE_URL}/people`)
-      .pipe(map((characters =>
-          characters.results.map(character => {
-            character.id = parseInt(character.url.substring(CHARACTER_HTTP_URL_LENGTH, character.url.length - 1), 10);
-            return character;
-          })
-      )));
+  getCharactersList(pageNumber = 1): Observable<ListResponse<Character>> {
+    this.loaderService.startLoading();
+    return this.http.get<ListResponse<Character>>(`${SWAPI_BASE_URL}/people/?page=${pageNumber}`)
+      .pipe(map((characters => {
+          characters.results.forEach(character => {
+            character.id = this.getCharacterId(character.url);
+          });
+          return characters;
+        }
+      )), finalize(() => this.loaderService.finishLoading()));
   }
 
   getCharactersByFilm(film: Film) {
-    return forkJoin(film.characters.map(characterUrl =>
-      this.http.get<Character>(characterUrl)
+    return forkJoin(film.characters.map(characterUrl => {
+      this.loaderService.startLoading();
+      return this.http.get<Character>(characterUrl)
         .pipe(map(character => {
-          character.id = parseInt(character.url.substring(CHARACTER_HTTP_URL_LENGTH, character.url.length - 1), 10);
+          character.id = this.getCharacterId(character.url);
           return character;
-        }))
-    ));
+        }), finalize(() => this.loaderService.finishLoading()))
+    }));
   }
 
   getCharacter(characterId: number): Observable<Character> {
+    this.loaderService.startLoading();
     return this.http.get<Character>(`${SWAPI_BASE_URL}/people/${characterId}`)
       .pipe(map(character => {
         character.id = characterId;
         return character;
-      }));
+      }), finalize(() => this.loaderService.finishLoading()));
   }
 
   getCharacterByUrl(characterUrl: string): Observable<Character> {
+    this.loaderService.startLoading();
     return this.http.get<Character>(characterUrl)
       .pipe(map(character => {
-        character.id = parseInt(character.url.substring(CHARACTER_HTTP_URL_LENGTH, character.url.length - 1), 10);
+        character.id = this.getCharacterId(character.url);
         return character;
-      }));
+      }), finalize(() => this.loaderService.finishLoading()));
+  }
+
+  private getCharacterId(characterUrl: string): number {
+    return parseInt(characterUrl.substring(CHARACTER_HTTP_URL_LENGTH, characterUrl.length - 1), 10);
   }
 }

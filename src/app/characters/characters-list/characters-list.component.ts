@@ -1,5 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Character, CharactersService} from '../characters.service';
+import {PageEvent} from '@angular/material';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-characters-list',
@@ -7,22 +9,30 @@ import {Character, CharactersService} from '../characters.service';
   styleUrls: ['./characters-list.component.scss']
 })
 export class CharactersListComponent implements OnInit, OnDestroy {
-  loading: boolean;
   characters: Character[];
+  charactersCount: number;
+  subscription: Subscription;
 
   constructor(public charactersService: CharactersService) {
   }
 
   ngOnInit() {
-    this.loading = true;
-    this.charactersService.getCharactersList().subscribe(data => {
-      this.characters = data;
-      this.loading = false;
+    this.subscription = this.charactersService.getCharactersList().subscribe(data => {
+      this.characters = data.results;
+      this.charactersCount = data.count;
+    });
+  }
+
+  pageData(event: PageEvent) {
+    this.subscription = this.charactersService.getCharactersList(event.pageIndex + 1).subscribe(data => {
+      this.characters = data.results;
     });
   }
 
   ngOnDestroy() {
-    this.loading = false;
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
 }
