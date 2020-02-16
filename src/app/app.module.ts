@@ -26,6 +26,7 @@ import {CommonModule} from '@angular/common';
 import {CharacterDetailsComponent} from './characters/character-details/character-details.component';
 import {CanActivateCharacterDetailsService} from './characters/can-activate-character-details.service';
 import {CharactersListComponent} from './characters/characters-list/characters-list.component';
+import {FilmsListTableComponent} from './films/films-list-table/films-list-table.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import {CharactersListComponent} from './characters/characters-list/characters-l
     NavbarComponent,
     FilmDetailsComponent,
     FilmsListComponent,
+    FilmsListTableComponent,
     CharactersListComponent,
     CharactersListTableComponent,
     CharacterDetailsComponent
