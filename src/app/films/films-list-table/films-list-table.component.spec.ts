@@ -42,11 +42,11 @@ describe('HouseholdsListComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should load films data', () => {
-    spyOn(householdsService, 'getFilmsList').and.callThrough();
-    component.ngOnInit();
-    expect(householdsService.getFilmsList).toHaveBeenCalled();
-  });
+  // it('should load films data', () => {
+  //   spyOn(householdsService, 'getFilmsList').and.callThrough();
+  //   component.ngOnInit();
+  //   expect(householdsService.getFilmsList).toHaveBeenCalled();
+  // });
 
   it('should navigate to details page', () => {
     spyOn(router, 'navigate');

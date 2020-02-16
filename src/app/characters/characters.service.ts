@@ -66,7 +66,7 @@ export class CharactersService {
     this.loaderService.startLoading();
     return this.http.get<Character>(`${SWAPI_BASE_URL}/people/${characterId}`)
       .pipe(map(character => {
-        character.id = characterId;
+        character.id = this.getCharacterId(character.url);
         return character;
       }), finalize(() => this.loaderService.finishLoading()));
   }

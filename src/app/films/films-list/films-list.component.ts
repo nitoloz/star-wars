@@ -8,7 +8,6 @@ import {Subscription} from 'rxjs';
   styleUrls: ['./films-list.component.scss']
 })
 export class FilmsListComponent implements OnInit, OnDestroy {
-  loading: boolean;
   films: Film[];
   subscription: Subscription;
 

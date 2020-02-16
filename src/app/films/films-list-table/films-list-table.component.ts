@@ -8,16 +8,13 @@ import {Film, FilmsService} from '../films.service';
   styleUrls: ['./films-list-table.component.scss']
 })
 
-export class FilmsListTableComponent implements OnInit {
+export class FilmsListTableComponent {
 
   @Input() films: Film[];
   tableColumns = ['title', 'episode_id', 'release_date', 'director', 'producer'];
 
   constructor(public filmsService: FilmsService,
               private router: Router) {
-  }
-
-  ngOnInit() {
   }
 
   showDetails(film: Film) {

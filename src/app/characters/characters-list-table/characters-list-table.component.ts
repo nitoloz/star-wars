@@ -7,16 +7,13 @@ import {Character, CharactersService} from '../characters.service';
   templateUrl: './characters-list-table.component.html',
   styleUrls: ['./characters-list-table.component.scss']
 })
-export class CharactersListTableComponent implements OnInit {
+export class CharactersListTableComponent {
 
   @Input() characters: Character[];
   tableColumns = ['name', 'birth_year', 'height', 'mass', 'hair_color', 'skin_color', 'eye_color'];
 
   constructor(public charactersService: CharactersService,
               private router: Router) {
-  }
-
-  ngOnInit() {
   }
 
   showDetails(character: Character) {
