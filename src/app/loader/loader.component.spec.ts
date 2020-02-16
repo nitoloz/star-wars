@@ -1,6 +1,7 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { LoaderComponent } from './loader.component';
+import {LoaderComponent} from './loader.component';
+import {MatProgressSpinnerModule} from '@angular/material';
 
 describe('LoaderComponent', () => {
   let component: LoaderComponent;
@@ -8,9 +9,10 @@ describe('LoaderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LoaderComponent ]
+      imports: [MatProgressSpinnerModule],
+      declarations: [LoaderComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -20,6 +22,8 @@ describe('LoaderComponent', () => {
   });
 
   it('should create', () => {
+    const spinner = fixture.debugElement.nativeElement.querySelector('.mat-spinner');
+    expect(spinner).toBeDefined();
     expect(component).toBeTruthy();
   });
 });

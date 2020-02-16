@@ -35,7 +35,8 @@ export class FilmsService {
   filmsList: Film[];
   selectedFilm: Film;
 
-  constructor(private http: HttpClient, private loaderService: LoaderService) {
+  constructor(private http: HttpClient,
+              private loaderService: LoaderService) {
   }
 
   getFilmsList(): Observable<Film[]> {
@@ -61,7 +62,7 @@ export class FilmsService {
           .pipe(map(film => {
             film.id = this.getFilmId(film.url);
             return film;
-          }), finalize(() => this.loaderService.finishLoading()))
+          }), finalize(() => this.loaderService.finishLoading()));
       }
     ));
   }
