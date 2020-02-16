@@ -1,0 +1,12 @@
+.container {
+}
+
+table {
+  width: 100%;
+  table-layout: fixed;
+
+  .mat-row:hover {
+    cursor: pointer;
+    background-color: #f5f5f5;
+  }
+}

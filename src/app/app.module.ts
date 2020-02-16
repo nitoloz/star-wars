@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
 import {MatButtonModule, MatToolbarModule} from '@angular/material';
 import {NavbarComponent} from './navbar/navbar.component';
+import {MoviesModule} from './movies/movies.module';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import {NavbarComponent} from './navbar/navbar.component';
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
+    MoviesModule,
     BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule
