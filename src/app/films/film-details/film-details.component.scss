@@ -1,11 +1,15 @@
-table {
-  width: 80%;
-  table-layout: fixed;
-
-  .mat-row:hover {
-    cursor: pointer;
-    background-color: #f5f5f5;
-  }
+//table {
+//  width: 80%;
+//  table-layout: fixed;
+//
+//  .mat-row:hover {
+//    cursor: pointer;
+//    background-color: #f5f5f5;
+//  }
+//}
+.table-container {
+  max-height: 45vh;
+  overflow: auto;
 }
 
 ::ng-deep.mat-grid-tile {

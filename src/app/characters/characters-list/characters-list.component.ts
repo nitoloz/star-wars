@@ -1,5 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Character, CharactersService} from '../characters.service';
 
 @Component({
@@ -7,21 +6,23 @@ import {Character, CharactersService} from '../characters.service';
   templateUrl: './characters-list.component.html',
   styleUrls: ['./characters-list.component.scss']
 })
-export class CharactersListComponent implements OnInit {
+export class CharactersListComponent implements OnInit, OnDestroy {
+  loading: boolean;
+  characters: Character[];
 
-  @Input() characters: Character[];
-  tableColumns = ['name', 'birth_year', 'height', 'mass', 'hair_color', 'skin_color', 'eye_color'];
-
-  constructor(public charactersService: CharactersService,
-              private router: Router) {
+  constructor(public charactersService: CharactersService) {
   }
 
   ngOnInit() {
+    this.loading = true;
+    this.charactersService.getCharactersList().subscribe(data => {
+      this.characters = data;
+      this.loading = false;
+    });
   }
 
-  showDetails(character: Character) {
-    this.charactersService.selectedCharacter = character;
-    this.router.navigate(['/characters', character.id]);
+  ngOnDestroy() {
+    this.loading = false;
   }
 
 }

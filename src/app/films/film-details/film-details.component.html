@@ -33,6 +33,9 @@
         <span class="mat-body">{{film.characters.length}}</span>
       </mat-grid-tile>
     </mat-grid-list>
-    <app-characters-list [characters]="film.charactersData"></app-characters-list>
+    <h3 class="mat-h3">Characters</h3>
+    <div class="table-container">
+      <app-characters-list-table [characters]="film.charactersData"></app-characters-list-table>
+    </div>
   </mat-card-content>
 </mat-card>

@@ -1,10 +1,10 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {CharactersListComponent} from './characters-list.component';
+import {CharactersListTableComponent} from './characters-list-table.component';
 import {FilmsService} from "../films.service";
 import {of} from "rxjs/internal/observable/of";
 import {Router} from "@angular/router";
-import {MockRouter} from "../can-activate-film-details.service.spec";
+import {MockRouter} from "../can-activate-character-details.service.spec";
 import {CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA} from "@angular/core";
 import {MatTableModule} from "@angular/material";
 
@@ -20,13 +20,13 @@ export class MockHouseholdsService {
 let householdsService: FilmsService;
 let router: Router;
 describe('HouseholdsListComponent', () => {
-  let component: CharactersListComponent;
-  let fixture: ComponentFixture<CharactersListComponent>;
+  let component: CharactersListTableComponent;
+  let fixture: ComponentFixture<CharactersListTableComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [MatTableModule],
-      declarations: [CharactersListComponent],
+      declarations: [CharactersListTableComponent],
       providers: [
         {provide: FilmsService, useClass: MockHouseholdsService},
         {provide: Router, useClass: MockRouter}
@@ -40,7 +40,7 @@ describe('HouseholdsListComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CharactersListComponent);
+    fixture = TestBed.createComponent(CharactersListTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

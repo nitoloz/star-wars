@@ -21,10 +21,11 @@ import {CanActivateFilmDetailsService} from './films/can-activate-film-details.s
 import {CharactersService} from './characters/characters.service';
 import {FilmDetailsComponent} from './films/film-details/film-details.component';
 import {FilmsListComponent} from './films/films-list/films-list.component';
-import {CharactersListComponent} from './characters/characters-list/characters-list.component';
+import {CharactersListTableComponent} from './characters/characters-list-table/characters-list-table.component';
 import {CommonModule} from '@angular/common';
 import {CharacterDetailsComponent} from './characters/character-details/character-details.component';
 import {CanActivateCharacterDetailsService} from './characters/can-activate-character-details.service';
+import {CharactersListComponent} from './characters/characters-list/characters-list.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import {CanActivateCharacterDetailsService} from './characters/can-activate-char
     FilmDetailsComponent,
     FilmsListComponent,
     CharactersListComponent,
+    CharactersListTableComponent,
     CharacterDetailsComponent
   ],
   imports: [
