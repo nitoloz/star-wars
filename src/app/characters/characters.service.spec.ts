@@ -1,7 +1,7 @@
 import {TestBed} from '@angular/core/testing';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {CharactersService} from './characters.service';
 
-import {CharactersService, SIMULATION_TYPE} from './characters.service';
-import {HttpClientTestingModule} from "@angular/common/http/testing";
 
 describe('HouseholdsService', () => {
   beforeEach(() => TestBed.configureTestingModule({
@@ -16,7 +16,5 @@ describe('HouseholdsService', () => {
 
   it('should return correct household type icon', () => {
     const service: CharactersService = TestBed.get(CharactersService);
-    expect(service.getHouseholdTypeIcon(SIMULATION_TYPE.HOUSEHOLD_SINGLE)).toBe('person');
-    expect(service.getHouseholdTypeIcon(SIMULATION_TYPE.HOUSEHOLD_FAMILE)).toBe('people_alt');
   });
 });

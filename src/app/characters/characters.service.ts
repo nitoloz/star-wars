@@ -71,15 +71,6 @@ export class CharactersService {
       }), finalize(() => this.loaderService.finishLoading()));
   }
 
-  getCharacterByUrl(characterUrl: string): Observable<Character> {
-    this.loaderService.startLoading();
-    return this.http.get<Character>(characterUrl)
-      .pipe(map(character => {
-        character.id = this.getCharacterId(character.url);
-        return character;
-      }), finalize(() => this.loaderService.finishLoading()));
-  }
-
   private getCharacterId(characterUrl: string): number {
     return parseInt(characterUrl.substring(CHARACTER_HTTP_URL_LENGTH, characterUrl.length - 1), 10);
   }

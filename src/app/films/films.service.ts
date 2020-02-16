@@ -1,7 +1,7 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {forkJoin, Observable} from 'rxjs';
-import {finalize, map} from 'rxjs/operators';
+import {forkJoin, Observable, of} from 'rxjs';
+import {finalize, map, tap} from 'rxjs/operators';
 import {SWAPI_BASE_URL, ListResponse} from '../http.interface';
 import {Character} from '../characters/characters.service';
 import {LoaderService} from '../loader/loader.service';
@@ -32,19 +32,26 @@ export interface Film {
 })
 export class FilmsService {
 
+  filmsList: Film[];
   selectedFilm: Film;
 
   constructor(private http: HttpClient, private loaderService: LoaderService) {
   }
 
   getFilmsList(): Observable<Film[]> {
-    this.loaderService.startLoading();
-    return this.http.get<ListResponse<Film>>(`${SWAPI_BASE_URL}/films`)
-      .pipe(map((films => films.results.map(film => {
-          film.id = this.getFilmId(film.url);
-          return film;
-        })
-      )), finalize(() => this.loaderService.finishLoading()));
+    if (this.filmsList) {
+      return of(this.filmsList);
+    } else {
+      this.loaderService.startLoading();
+      return this.http.get<ListResponse<Film>>(`${SWAPI_BASE_URL}/films`)
+        .pipe(map((films => films.results.map(film => {
+              film.id = this.getFilmId(film.url);
+              return film;
+            })
+          )),
+          tap(films => this.filmsList = films),
+          finalize(() => this.loaderService.finishLoading()));
+    }
   }
 
   getFilmsByCharacter(character: Character) {

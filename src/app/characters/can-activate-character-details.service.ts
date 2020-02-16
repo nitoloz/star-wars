@@ -38,15 +38,17 @@ export class CanActivateCharacterDetailsService implements CanActivate {
   }
 
   getFilmsForSelectedCharacter(): Observable<boolean> {
-    return this.filmsService.getFilmsByCharacter(this.charactersService.selectedCharacter).pipe(
-      catchError(error => {
-        this.router.navigate(['/characters']);
-        return of(false);
-      }),
-      map((films: Film[]) => {
-        this.charactersService.selectedCharacter.filmsData = films;
-        return true;
-      })
-    );
+    return this.charactersService.selectedCharacter.filmsData !== undefined
+      ? of(true)
+      : this.filmsService.getFilmsByCharacter(this.charactersService.selectedCharacter).pipe(
+        catchError(error => {
+          this.router.navigate(['/characters']);
+          return of(false);
+        }),
+        map((films: Film[]) => {
+          this.charactersService.selectedCharacter.filmsData = films;
+          return true;
+        })
+      );
   }
 }

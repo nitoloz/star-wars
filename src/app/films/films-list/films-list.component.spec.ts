@@ -1,12 +1,12 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {FilmsListComponent} from './films-list.component';
-import {FilmsService} from "../films.service";
-import {of} from "rxjs/internal/observable/of";
-import {Router} from "@angular/router";
-import {MockRouter} from "../can-activate-film-details.service.spec";
-import {CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA} from "@angular/core";
-import {MatTableModule} from "@angular/material";
+import {FilmsService} from '../films.service';
+import {MatTableModule} from '@angular/material';
+import {of} from 'rxjs';
+import {Router} from '@angular/router';
+import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {MockRouter} from '../can-activate-film-details.service.spec';
 
 export class MockHouseholdsService {
   getData() {

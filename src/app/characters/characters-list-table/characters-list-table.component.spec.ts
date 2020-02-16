@@ -1,20 +1,16 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {CharactersListTableComponent} from './characters-list-table.component';
-import {FilmsService} from "../films.service";
-import {of} from "rxjs/internal/observable/of";
-import {Router} from "@angular/router";
-import {MockRouter} from "../can-activate-character-details.service.spec";
-import {CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA} from "@angular/core";
-import {MatTableModule} from "@angular/material";
+import {MockRouter} from '../../films/can-activate-film-details.service.spec';
+import {FilmsService} from '../../films/films.service';
+import {MatTableModule} from '@angular/material';
+import {of} from 'rxjs';
+import {Router} from '@angular/router';
+import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {CharactersService} from '../characters.service';
 
-export class MockHouseholdsService {
-  getData() {
-    return of([]);
-  }
-  getHouseholdTypeIcon(){
-    return 'person';
-  }
+export class MockCharactersService {
+
 }
 
 let householdsService: FilmsService;
@@ -28,7 +24,7 @@ describe('HouseholdsListComponent', () => {
       imports: [MatTableModule],
       declarations: [CharactersListTableComponent],
       providers: [
-        {provide: FilmsService, useClass: MockHouseholdsService},
+        {provide: CharactersService, useClass: MockCharactersService},
         {provide: Router, useClass: MockRouter}
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
