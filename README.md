@@ -1,4 +1,5 @@
 # Star Wars
+![Fild Details](/docs/film_details.png)
 
 ## Task
 Create a single page “Star Wars” application using [SWAPI](https://swapi.co/). 
@@ -46,6 +47,11 @@ Would be a plus:
 2. Use NgRx or similar libraries for building reactive application 
 3. Use private repository if possible
 
+## Solution
+| | |
+|:-------------------------:|:-------------------------:|
+|<img width="1604" alt="Films list" src="/docs/films_list.png">  Films list |  <img width="1604" alt="Film details" src="/docs/film_details.png"> Films details |
+|<img width="1604" alt="Characters list" src="/docs/characters_list.png"> Characters list |  <img width="1604" alt="Character details" src="/docs/character_details.png"> Character details |
 
 ## Development
 
