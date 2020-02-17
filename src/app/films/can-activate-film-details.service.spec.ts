@@ -17,7 +17,7 @@ export class MockRouter {
 let filmsService: FilmsService;
 let charactersService: CharactersService;
 let router: Router;
-fdescribe('CanActivateFilmDetailsService', () => {
+describe('CanActivateFilmDetailsService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
