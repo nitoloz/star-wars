@@ -48,6 +48,14 @@ Would be a plus:
 
 
 ## Development
+
+### Technologies
+ Project is built using following frameworks and libraries:
+ * angular v8.2.4;
+ * angular/material v8.2.3;
+ * rxjs v6.4.0;
+ * angular-cli-ghpages: v0.6.2;
+ 
 ### Install and run
 
 In order to install all dependencies run `npm install` from the root folder (where `package.json` is stored).
