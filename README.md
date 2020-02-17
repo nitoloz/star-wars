@@ -50,7 +50,7 @@ Would be a plus:
 ## Solution
 | | |
 |:-------------------------:|:-------------------------:|
-|<img width="1604" alt="Films list" src="/docs/films_list.png">  Films list |  <img width="1604" alt="Film details" src="/docs/film_details.png"> Films details |
+|<img width="1604" alt="Films list" src="/docs/films_list.png">  Films list |  <img width="1604" alt="Film details" src="/docs/film_details.png"> Film details |
 |<img width="1604" alt="Characters list" src="/docs/characters_list.png"> Characters list |  <img width="1604" alt="Character details" src="/docs/character_details.png"> Character details |
 
 ## Development
