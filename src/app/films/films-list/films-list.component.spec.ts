@@ -1,13 +1,14 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {FilmsListComponent} from './films-list.component';
-import {FilmsService} from '../films.service';
+import {Film, FilmsService} from '../films.service';
 import {MatTableModule} from '@angular/material';
 import {of} from 'rxjs';
 import {Router} from '@angular/router';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {MockRouter} from '../can-activate-film-details.service.spec';
 import {Character} from '../../characters/characters.service';
+import {ListResponse} from '../../http.interface';
 
 export class MockFilmsService {
   getFilmsList() {
@@ -23,9 +24,9 @@ export class MockFilmsService {
   }
 }
 
-let householdsService: FilmsService;
+let filmsService: FilmsService;
 let router: Router;
-describe('HouseholdsListComponent', () => {
+describe('FilmsListComponent', () => {
   let component: FilmsListComponent;
   let fixture: ComponentFixture<FilmsListComponent>;
 
@@ -41,7 +42,7 @@ describe('HouseholdsListComponent', () => {
     })
       .compileComponents();
 
-    householdsService = TestBed.get(FilmsService);
+    filmsService = TestBed.get(FilmsService);
     router = TestBed.get(Router);
   }));
 
@@ -55,16 +56,10 @@ describe('HouseholdsListComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should load films data', () => {
-    spyOn(householdsService, 'getFilmsList').and.callThrough();
+  it('should load films data on init', () => {
+    spyOn(filmsService, 'getFilmsList').and.returnValue(of([{id: 1} as Film]));
     component.ngOnInit();
-    expect(householdsService.getFilmsList).toHaveBeenCalled();
+    expect(filmsService.getFilmsList).toHaveBeenCalled();
+    expect(component.films).toEqual([{id: 1} as Film]);
   });
-
-  it('should navigate to details page', () => {
-    // spyOn(router, 'navigate');
-    // component.showDetails({_id: {$oid: '1'}} as any);
-    // expect(router.navigate).toHaveBeenCalledWith(['/households', '1']);
-  });
-
 });
