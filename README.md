@@ -48,9 +48,10 @@ Would be a plus:
 
 
 ## Development
-### Local development
+### Install and run
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+In order to install all dependencies run `npm install` from the root folder (where `package.json` is stored).
+After that run `npm run start` to start a development server and open `http://localhost:4200/` in browser.
 
 ### Build
 
@@ -60,3 +61,6 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
+## Deploy
+
+Run `npm run deploy` to deploy the project to Github pages.
